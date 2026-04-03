@@ -97,7 +97,9 @@ Frame1      Frame2      Frame3      Frame4
 
   * Δt ≈ **0.0123 ms**  
 
-![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-Link-server-to-client.svg)
+![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client.svg)  
+
+![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v1.svg)  
 
 ---
 
