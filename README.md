@@ -95,6 +95,17 @@ Frame1      Frame2      Frame3      Frame4
 
 \* At 1 Gbps, Δt is limited by analyzer timestamp resolution.  
 
+## 📊 Expected Results
+
+| Link Speed | Frame Size | On-Wire Size | L/R (Frame) | Δt (Wire-Time) | Observed Δt |
+|------------|------------|--------------|-------------|----------------|-------------|
+| 10 Mbps    | 1518 B     | 1538 B       | 1.214 ms    | 1.230 ms       | Consistent  |
+| 100 Mbps   | 1518 B     | 1538 B       | 0.121 ms    | 0.123 ms       | Consistent  |
+| 1 Gbps     | 1518 B     | 1538 B       | 12.144 µs   | 12.304 µs      | ≈ 12–13 µs* |
+
+\* Limited by analyzer timestamp resolution at microsecond granularity.
+
+
 ![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client.svg)  
 ![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v1.svg)  
 ![Packet Analysis3](./observing-ethernet-transmission-delay-on-a-1gbps-link-server-to-client.svg)  
