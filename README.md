@@ -63,15 +63,12 @@ Client (10/100/1000 Mbps)
         │
 Server (HTTP)
 ```
-
 * Direct connection (no switch / router)
 * TAP used for **accurate packet capture**
 * Capture device: **NetScout InfiniStream (in-memory capture)**
-
+![Lab Topology](./experimental-setup.svg)
 ---
-
 ### Traffic Generation
-
 * HTTP download (curl)
 * Large file transfer (multi-MB)
 * Continuous packet train generation
@@ -80,7 +77,7 @@ Server (HTTP)
 
 ## 📊 What We Observe
 
-### Packet Train (Example)
+### Packet Train  
 
 ```
 Frame1      Frame2      Frame3      Frame4
