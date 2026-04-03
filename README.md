@@ -95,7 +95,9 @@ Frame1      Frame2      Frame3      Frame4
   * Δt ≈ **0.123 ms**
 * At **1 Gbps**:
 
-  * Δt ≈ **0.0123 ms**
+  * Δt ≈ **0.0123 ms**  
+
+![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-Link-server-to-client.svg)
 
 ---
 
