@@ -1,23 +1,8 @@
-# tcp-timing-lab-01-Observing-serialization-delay
-Observing Ethernet serialization delay through inter-frame timing (Δt) across 10/100/1000 Mbps links
-
----
-
-
 # TCP Timing Lab 01
 
 ## Observing Transmission Delay (Serialization Delay)  
-
+Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
 > **The network transmits bits, not packets.**
-
----
-
-## 📌 Overview
-
-# TCP Timing Lab 01  
-## Observing Transmission Delay (Serialization Delay)
-
-> From theory to wire: making L / R visible.
 
 ---
 
