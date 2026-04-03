@@ -66,7 +66,7 @@ Server (HTTP)
 * Direct connection (no switch / router)
 * TAP used for **accurate packet capture**
 * Capture device: **NetScout InfiniStream (in-memory capture)**
-![Lab Topology](./experimental-setup.svg)
+![Lab Topology](./experimental-setup_v2.svg)
 ---
 ### Traffic Generation
 * HTTP download (curl)
@@ -105,9 +105,13 @@ Frame1      Frame2      Frame3      Frame4
 
 \* Limited by analyzer timestamp resolution at microsecond granularity.
 
+## Experimental Results (10Mbps)  
+![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client_v2.svg)  
 
-![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client.svg)  
-![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v1.svg)  
+## Experimental Results (100Mbps)
+![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v2.svg)  
+
+## Experimental Results (1Gbps)
 ![Packet Analysis3](./observing-ethernet-transmission-delay-on-a-1gbps-link-server-to-client.svg)  
 
 ---
