@@ -58,7 +58,7 @@ what we are actually observing is:
 Client (10/100/1000 Mbps)
         │
         │
-   NetOptics TAP (FDX / Aggregation)
+   NetOptics TAP (FDX)
         │
         │
 Server (HTTP)
