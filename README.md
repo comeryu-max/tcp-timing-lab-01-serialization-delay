@@ -85,21 +85,19 @@ Frame1      Frame2      Frame3      Frame4
     Δt          Δt          Δt
 ```
 
-### Key Observation
+## 📊 Key Observation
 
-* At **10 Mbps**:
+| Link Speed | Observed Δt |
+|------------|------------|
+| 10 Mbps    | ≈ 1.23 ms  |
+| 100 Mbps   | ≈ 0.123 ms |
+| 1 Gbps     | ≈ 0.012–0.013 ms* |
 
-  * Δt ≈ **1.23 ms**
-* At **100 Mbps**:
-
-  * Δt ≈ **0.123 ms**
-* At **1 Gbps**:
-
-  * Δt ≈ **0.0123 ms**  
+\* At 1 Gbps, Δt is limited by analyzer timestamp resolution.  
 
 ![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client.svg)  
-
 ![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v1.svg)  
+![Packet Analysis3](./observing-ethernet-transmission-delay-on-a-1gbps-link-server-to-client.svg)  
 
 ---
 
