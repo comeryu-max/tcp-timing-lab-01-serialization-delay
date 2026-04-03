@@ -65,7 +65,7 @@ Server (HTTP)
 ```
 * Direct connection (no switch / router)
 * TAP used for **accurate packet capture**
-* Capture device: **NetScout InfiniStream (in-memory capture)**
+* Capture device: **NPM Device / Protocol Analyzer (in-memory capture)**
 ![Lab Topology](./experimental-setup_v2.svg)
 ---
 ### Traffic Generation
