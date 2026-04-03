@@ -150,9 +150,21 @@ Ethernet on-wire size includes:
 
 ## 🔍 Measurement Method
 
-### Key Technique
+## 🔧 Key Technique
 
-> Use **Wireshark / InfiniStream Δt (Time Since Previous Frame)**
+This experiment relies on isolating a single physical timing component from a complex system.
+
+1) **Controlled Environment**  
+Design an "ideal" observation environment that isolates Transmission (Serialization) Delay by minimizing Processing, Queuing, and Propagation Delays.
+
+2) **Wire-Level Visibility**  
+Use a physical-layer TAP (NetOptics Full-Duplex In-Line TAP) to gain non-intrusive, wire-speed access to traffic.
+
+3) **High-Precision Measurement**  
+Capture packets using a dedicated NPM device / protocol analyzer with microsecond-level timestamp accuracy.
+
+4) **Time-Domain Analysis**  
+Analyze inter-frame spacing (Δt) in Wireshark to directly observe the physical timing structure of packet transmission.
 
 ---
 
