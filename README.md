@@ -6,7 +6,7 @@ Observing Ethernet serialization delay through inter-frame timing (Δt) across 1
 
 # TCP Timing Lab 01
 
-## Observing Serialization Delay
+## Observing Transmission Delay (Serialization Delay)  
 
 > **The network transmits bits, not packets.**
 
@@ -14,17 +14,39 @@ Observing Ethernet serialization delay through inter-frame timing (Δt) across 1
 
 ## 📌 Overview
 
-This lab demonstrates that **Ethernet serialization delay is a fixed physical time**, not a theoretical abstraction.
-By observing **inter-frame spacing (Δt)** in real packet captures, we directly measure serialization delay across different link speeds.
+# TCP Timing Lab 01  
+## Observing Transmission Delay (Serialization Delay)
+
+> From theory to wire: making L / R visible.
+
+---
+
+## 📌 Overview
+
+In the classic textbook Computer Networking: A Top-Down Approach, Transmission Delay (also known as Serialization Delay) is defined as:
+
+L / R
+
+- L: packet length (bits)  
+- R: link rate (bps)
+
+It is one of the simplest formulas in networking.
+
+So simple that almost every network engineer *knows* it —  
+yet almost no one has ever *seen* it on the wire.
+
+
+This lab demonstrates that **Ethernet Transmission Delay (serialization delay) is a fixed physical time**, not a theoretical abstraction.
+By observing **inter-frame spacing (Δt)** in real packet captures, we directly measure Transmission Delay (serialization delay) across different link speeds.
 
 ---
 
 ## 🎯 Objective
 
-* To **observe serialization delay directly from packet captures**
+* To **observe Transmission Delay (serialization delay) directly from packet captures**
 * To validate that:
 
-  * Serialization delay = **frame size / link rate**
+  * Transmission Delay (serialization delay) = **frame size / link rate**
   * It appears as **Δt between consecutive frames**
 * To compare behavior across:
 
@@ -34,7 +56,7 @@ By observing **inter-frame spacing (Δt)** in real packet captures, we directly 
 
 ## 🧠 Key Insight
 
-> **Serialization delay is not inferred — it is observable.**
+> **Transmission Delay (serialization delay) is not inferred — it is observable.**
 
 Even though packet analyzers display frames,
 what we are actually observing is:
