@@ -30,14 +30,6 @@ By observing inter-frame spacing (Δt) in real packet captures, we reveal that E
 
 ---
 
-## 🎯 Objective
-
-- Make Transmission Delay observable  
-- Map L / R → Δt (inter-frame spacing)  
-- Validate theory using real packet captures  
-
----
-
 ## 🧠 Key Insight
 
 
@@ -47,6 +39,14 @@ Transmission Delay = Serialization Delay = Δt (inter-frame spacing)
 What you see in packet captures is not an approximation.
 
 It *is* the wire.
+
+---
+
+## 🎯 Objective
+
+- Make Transmission Delay observable  
+- Map L / R → Δt (inter-frame spacing)  
+- Validate theory using real packet captures  
 
 ---
 
@@ -137,6 +137,10 @@ Therefore:
 
 This is exactly the definition of Transmission (Serialization) Delay.
 
+> This is not a model of the network.
+
+> This is the network itself.
+
 ---
 
 ### 🧠 Conclusion
@@ -196,24 +200,28 @@ Each Δt reflects the time required to serialize one frame onto the link.
 
 ![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client_v2.svg)  
 
+*Figure 1. Packet train observed at 10 Mbps showing constant inter-frame spacing (Δt ≈ 1.23 ms), directly corresponding to transmission delay.*  
+
 ---
 
 ## 📈 Experimental Results (100 Mbps)
 
 ![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v2.svg)  
+The observed Δt scales proportionally with link rate, consistent with L / R.  
 
 ---
 
 ## 📈 Experimental Results (1 Gbps)
 
 ![Packet Analysis3](./observing-ethernet-transmission-delay-on-a-1gbps-link-server-to-client.svg)  
-
-*Observed Δt is shown as ~0.012 ms due to timestamp quantization; theoretical value is ~12.304 µs.*
+*Observed Δt is shown as ~0.012 ms due to timestamp quantization; theoretical value is ~12.304 µs.*  
+The observed Δt scales proportionally with link rate, consistent with L / R.  
 
 ---
 
 ## 📐 Theoretical Derivation
 
+The experimental results align precisely with theoretical expectations:
 Ethernet on-wire size includes:
 
 - Frame: 1518 Bytes  
@@ -233,7 +241,7 @@ Transmission delay:
 Example (10 Mbps):
 
 
-Δt ≈ 1.23 ms
+Δt  = （1538 × 8）/ 10Mbps ≈ 1.23 ms
 
 
 ---
@@ -315,5 +323,11 @@ This lab establishes the foundation for:
 
 > When serialization delay is fixed,
 > why does throughput fluctuate?
+
+---
+
+This is not a visualization.
+
+This is a measurement.
 
 ---
