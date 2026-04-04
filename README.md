@@ -3,7 +3,8 @@
 ## Observing Transmission Delay (Serialization Delay)  
 
 Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
-> **The network transmits bits, not packets.**
+> **The network transmits bits, not packets.**  
+> From theory to wire: making L / R visible.  
 
 ---
 
