@@ -60,7 +60,11 @@ It *is* the wire.
 
 - Continuous TCP data transfer (HTTP download)  
 - Full-sized Ethernet frames (1518 Bytes)  
-- Back-to-back packet train under sustained throughput  
+- Back-to-back packet train under sustained throughput
+
+> The HTTP download throughput approaches the link capacity, leaving no idle gap between transmissions.  
+> As a result, the sender emits full-sized Ethernet frames in a continuous back-to-back manner, forming a packet train.  
+> In this regime, the inter-frame spacing (Δt) becomes a direct manifestation of serialization delay (Δt = L / R).  
 
 ---
 
