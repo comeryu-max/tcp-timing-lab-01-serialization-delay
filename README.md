@@ -1,7 +1,6 @@
 # TCP Timing Lab 01
 
 ## Observing Transmission Delay (Serialization Delay)  
-> Transmission Delay (Serialization Delay)  refers to the time required for a network interface to place an entire frame onto a physical transmission medium
 
 Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
 > **The network transmits bits, not packets.**
@@ -9,6 +8,8 @@ Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame 
 ---
 
 ## 📌 Overview
+
+> Transmission Delay (Serialization Delay)  refers to the time required for a network interface to place an entire frame onto a physical transmission medium  
 
 In the classic textbook *Computer Networking: A Top-Down Approach*, Transmission Delay (also known as Serialization Delay) is defined as:
 
