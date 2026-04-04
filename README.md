@@ -10,7 +10,7 @@ Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame 
 
 ## 📌 Overview
 
-> Transmission Delay (Serialization Delay)  refers to the time required for a network interface to place an entire frame onto a physical transmission medium  
+> Transmission Delay (Serialization Delay) refers to the time required for a network interface to place an entire frame onto a physical transmission medium; as such, it stands as one of the most fundamental timing structures in packet-switched networks.    
 
 In the classic textbook *Computer Networking: A Top-Down Approach*, Transmission Delay (also known as Serialization Delay) is defined as:
 
