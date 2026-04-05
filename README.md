@@ -209,6 +209,14 @@ the physical manifestation of L / R.
 *Figure 1. Packet train observed at 10 Mbps showing constant inter-frame spacing (Δt ≈ 1.23 ms), directly corresponding to transmission delay.*  
 
 ---
+📥 **Raw Packet Capture**
+
+- File: `lab01-fig1-10mbps-server-to-client.pcap`  
+- Size: 13.1 MB  
+- Packets: 8991  
+
+Download:  
+[Download PCAP](./data/pcap/lab01-fig1-10mbps-server-to-client.pcap)
 
 ## 📈 Experimental Results (100 Mbps)
 
