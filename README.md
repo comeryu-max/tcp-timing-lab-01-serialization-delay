@@ -162,14 +162,17 @@ This experiment demonstrates that Transmission Delay (L / R) is a physically obs
 
 ## 👁️ What We Observe
 
-### Packet Train
+### Packet Train: Making Transmission Delay Visible
 
-Under continuous transmission, packets form a **packet train**:
+Under continuous transmission, packets form a **packet train**:  
+
+What we observe is not packets — but timing structure:  
+
 
 <pre>
 Frame1      Frame2      Frame3      Frame4
 |------|    |------|    |------|    |------|
-  Δt         Δt         Δt
+ Δt         Δt         Δt
 </pre>
 
 Each Δt reflects the time required to serialize one frame onto the link —  
