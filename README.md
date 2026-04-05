@@ -216,7 +216,7 @@ the physical manifestation of L / R.
 - Packets: 8991  
 
 Download:  
-[Download PCAP](https://raw.githubusercontent.com/comeryu-max/tcp-timing-lab-01-observing-transmission-delay-serialization/blob/main/data/pcap/lab01-fig1-10mbps-server-to-client.pcap)  
+[Download PCAP](https://raw.githubusercontent.com/comeryu-max/tcp-timing-lab-01-observing-transmission-delay-serialization/main/data/pcap/lab01-fig1-10mbps-server-to-client.pcap)
 
 ## 📈 Experimental Results (100 Mbps)
 
