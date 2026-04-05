@@ -54,7 +54,7 @@ It *is* the wire.
 
 ### Topology
 
-![Lab Topology](./experimental-setup_v2.svg)
+![Lab Topology](./figures/fig1-experimental-setup.svg)  
 
 ### Traffic Generation
 
@@ -202,7 +202,7 @@ Each Δt reflects the time required to serialize one frame onto the link.
 
 ## 📈 Experimental Results (10 Mbps)
 
-![Packet Analysis](./observing-ethernet-transmission-delay-on-a-10mbps-link-server-to-client_v2.svg)  
+![Packet Analysis](./figures/fig2-transmission-delay-10mbps.svg)  
 
 *Figure 1. Packet train observed at 10 Mbps showing constant inter-frame spacing (Δt ≈ 1.23 ms), directly corresponding to transmission delay.*  
 
@@ -210,14 +210,14 @@ Each Δt reflects the time required to serialize one frame onto the link.
 
 ## 📈 Experimental Results (100 Mbps)
 
-![Packet Analysis2](./observing-ethernet-transmission-delay-on-a-100mbps-link-server-to-client-v2.svg)  
+![Packet Analysis2](./figures/fig3-transmission-delay-100mbps.svg)  
 The observed Δt scales proportionally with link rate, consistent with L / R.  
 
 ---
 
 ## 📈 Experimental Results (1 Gbps)
 
-![Packet Analysis3](./observing-ethernet-transmission-delay-on-a-1gbps-link-server-to-client.svg)  
+![Packet Analysis3](./figures/fig4-transmission-delay-1gbps.svg)  
 *Observed Δt is shown as ~0.012 ms due to timestamp quantization; theoretical value is ~12.304 µs.*  
 The observed Δt scales proportionally with link rate, consistent with L / R.  
 
