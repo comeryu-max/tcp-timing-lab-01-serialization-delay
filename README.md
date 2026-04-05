@@ -118,10 +118,10 @@ The measured quantity is:
 
 Δt = time between consecutive frames
 
-On a fully utilized link, frames are transmitted back-to-back, separated only by:
+On a fully utilized link, frames are transmitted back-to-back, separated only by:  
 
-Serialization time of the frame
-Fixed Ethernet overhead (Preamble + IFG)
+- Serialization time of the frame  
+- Fixed Ethernet overhead (Preamble + IFG)  
 
 Therefore:
 
