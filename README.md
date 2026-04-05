@@ -166,11 +166,9 @@ This experiment demonstrates that Transmission Delay (L / R) is a physically obs
 
 Under continuous transmission, packets form a **packet train**:
 
-
 Frame1     Frame2     Frame3     Frame4  
 |------|   |------|   |------|   |------|  
    Δt         Δt         Δt  
-
 
 Each Δt reflects the time required to serialize one frame onto the link.
 
@@ -222,8 +220,7 @@ The observed Δt scales proportionally with link rate, consistent with L / R.
 ---
 
 ## 📐 Theoretical Derivation
-
-The experimental results align precisely with theoretical expectations:
+The observed results align directly with the on-wire serialization model:
 Ethernet on-wire size includes:
 
 - Frame: 1518 Bytes  
