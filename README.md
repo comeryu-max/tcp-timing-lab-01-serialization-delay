@@ -166,9 +166,11 @@ This experiment demonstrates that Transmission Delay (L / R) is a physically obs
 
 Under continuous transmission, packets form a **packet train**:
 
-Frame1     Frame2     Frame3     Frame4  
-|------|   |------|   |------|   |------|  
-   Δt         Δt         Δt  
+<pre>
+Frame1      Frame2      Frame3      Frame4
+|------|    |------|    |------|    |------|
+   Δt         Δt         Δt
+</pre>
 
 Each Δt reflects the time required to serialize one frame onto the link.
 
