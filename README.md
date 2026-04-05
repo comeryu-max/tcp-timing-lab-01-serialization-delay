@@ -220,6 +220,8 @@ Download:
 - Direct Download (recommended):  
 https://raw.githubusercontent.com/comeryu-max/tcp-timing-lab-01-observing-transmission-delay-serialization/main/data/pcap/lab01-fig1-10mbps-server-to-client.pcap
 
+This PCAP file can be used to independently verify Δt ≈ L / R by observing inter-frame spacing in Wireshark.
+
 ## 📈 Experimental Results (100 Mbps)
 
 ![Packet Analysis2](./figures/fig3-transmission-delay-100mbps.svg)  
