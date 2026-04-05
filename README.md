@@ -169,10 +169,11 @@ Under continuous transmission, packets form a **packet train**:
 <pre>
 Frame1      Frame2      Frame3      Frame4
 |------|    |------|    |------|    |------|
-   Δt         Δt         Δt
+  Δt         Δt         Δt
 </pre>
 
-Each Δt reflects the time required to serialize one frame onto the link.
+Each Δt reflects the time required to serialize one frame onto the link —  
+the physical manifestation of L / R.
 
 ---
 
