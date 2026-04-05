@@ -56,18 +56,6 @@ It *is* the wire.
 
 ![Lab Topology](./figures/fig1-experimental-setup.svg)  
 
-### Traffic Generation
-
-- Continuous TCP data transfer (HTTP download)  
-- Full-sized Ethernet frames (1518 Bytes)  
-- Back-to-back packet train under sustained throughput
-
-> The HTTP download throughput approaches the link capacity, leaving no idle gap between transmissions.  
-> As a result, the sender emits full-sized Ethernet frames in a continuous back-to-back manner, forming a packet train.  
-> In this regime, the inter-frame spacing (Δt) becomes a direct manifestation of serialization delay (Δt = L / R).  
-
----
-
 ## ✅ Why This Measurement Is Valid
 
 This experiment is not an approximation.  
@@ -147,6 +135,18 @@ This is exactly the definition of Transmission (Serialization) Delay.
 
 ---
 
+### Traffic Generation
+
+- Continuous TCP data transfer (HTTP download)  
+- Full-sized Ethernet frames (1518 Bytes)  
+- Back-to-back packet train under sustained throughput
+
+> The HTTP download throughput approaches the link capacity, leaving no idle gap between transmissions.  
+> As a result, the sender emits full-sized Ethernet frames in a continuous back-to-back manner, forming a packet train.  
+> In this regime, the inter-frame spacing (Δt) becomes a direct manifestation of serialization delay (Δt = L / R).  
+
+---
+
 ### 🧠 Conclusion
 What is measured here is not a derived metric.
 
@@ -176,19 +176,17 @@ Each Δt reflects the time required to serialize one frame onto the link.
 
 ---
 
-## 📊 Key Observation
+## Key Observation
 
 | Link Speed | Observed Δt |
-|------------|------------|
-| 10 Mbps    | ≈ 1.23 ms  |
-| 100 Mbps   | ≈ 0.123 ms |
+|------------|-------------|
+| 10 Mbps    | ≈ 1.23 ms   |
+| 100 Mbps   | ≈ 0.123 ms  |
 | 1 Gbps     | ≈ 0.012–0.013 ms* |
 
-\* Limited by analyzer timestamp resolution.
+\* At 1 Gbps, Δt is limited by analyzer timestamp resolution.
 
----
-
-## 📊 Expected Results
+## Expected Results
 
 | Link Speed | Frame Size | On-Wire Size | L/R (Frame) | Δt (Wire-Time) | Observed Δt |
 |------------|------------|--------------|-------------|----------------|-------------|
@@ -196,7 +194,7 @@ Each Δt reflects the time required to serialize one frame onto the link.
 | 100 Mbps   | 1518 B     | 1538 B       | 0.121 ms    | 0.123 ms       | Consistent  |
 | 1 Gbps     | 1518 B     | 1538 B       | 12.144 µs   | 12.304 µs      | ≈ 12–13 µs* |
 
-\* Limited by analyzer timestamp resolution.
+\* Limited by analyzer timestamp resolution at microsecond granularity.  
 
 ---
 
