@@ -198,7 +198,7 @@ the physical manifestation of L / R.
 | 100 Mbps   | 1518 B     | 1538 B       | 0.121 ms    | 0.123 ms       | Consistent  |
 | 1 Gbps     | 1518 B     | 1538 B       | 12.144 µs   | 12.304 µs      | ≈ 12–13 µs* |
 
-\* Limited by analyzer timestamp resolution at microsecond granularity.  
+\* Measurement limited by analyzer timestamp resolution (microsecond granularity).  
 
 ---
 
