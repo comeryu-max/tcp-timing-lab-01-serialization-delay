@@ -6,7 +6,7 @@
 ## 观测传输时延（串行化时延） 
 
 Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
-通过 10/100/1000 Mbps 链路的帧间时间差 (Δt) 观察以太网传输延迟（串行化时延）  
+通过 10/100/1000 Mbps 链路的帧间时间差 (Δt) 观察以太网传输时延（串行化时延）  
 > **The network transmits bits, not packets.**  
 > **网络传输的是比特，而不是数据包**
 > 
@@ -44,29 +44,30 @@ By observing inter-frame spacing (Δt) in real packet captures, we reveal that E
 
 ---
 
-## 🧠 Key Insight
+## 🧠 Key Insight｜核心洞察
 
+Transmission Delay = Serialization Delay = Δt (inter-frame spacing)  
+传输时延 = 串行化时延 = Δt (帧间时间差) 
 
-Transmission Delay = Serialization Delay = Δt (inter-frame spacing)
+What you see in packet captures is not an approximation.  
+你在数据包捕获中看到的不是近似值。  
 
-
-What you see in packet captures is not an approximation.
-
-It *is* the wire.
-
----
-
-## 🎯 Objective
-
-- Make Transmission Delay observable  
-- Map L / R → Δt (inter-frame spacing)  
-- Validate theory using real packet captures  
+It *is* the wire.  
+它就是链路本身  
 
 ---
 
-## 🧪 Experiment Setup
+## 🎯 Objective｜实验目标
 
-### Topology
+- Make Transmission Delay observable  👉 让传输时延“可见”  
+- Map L / R → Δt (inter-frame spacing)  👉 建立 L / R → Δt 映射  
+- Validate theory using real packet captures  👉 用真实报文验证理论  
+
+---
+
+## 🧪 Experiment Setup｜实验环境
+
+### Topology｜网络拓扑
 
 ![Lab Topology](./figures/fig1-experimental-setup.svg)  
 
