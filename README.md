@@ -1,3 +1,5 @@
+[English](./README.md) | [简体中文](./README-zh-Hans.md)
+
 # TCP Timing Lab 01
 
 ## Observing Transmission Delay (Serialization Delay)  
