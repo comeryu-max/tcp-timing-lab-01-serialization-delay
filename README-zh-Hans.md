@@ -104,7 +104,7 @@ This eliminates all sources of Queuing and Processing Delay.
 地球周长约为 40,075 km，赤道对拓点（antipodal）之间的距离约为其一半，即约 20,037 km (2 × 10^7) 。  
 以单模光纤为例，其传播速度约为真空光速的 0.67，即 v = 2 × 10^8 m/s   
 Propagation Delay = Distance / Speed = (2 × 10^7) / (2 × 10^8) = 0.1s 即约 100 ms；  
-对应的往返时延（RTT）约为 200 ms。该值代表理想情况下由物理传播速度所决定的时延极限值。
+对应的往返时延（RTT）约为 200 ms。该值代表理想情况下由物理传播速度所决定的时延极限值。  
 传播时延受物理定律约束：即使在光纤中以接近光速传播，地球对拓点之间的通信 RTT 也不可能低于约 200 ms。  
 - Serialization Delay：把比特“推上链路”的时间  
 - Propagation Delay：比特在链路上“飞行”的时间  
