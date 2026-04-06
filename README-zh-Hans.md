@@ -21,7 +21,7 @@ Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame 
 > 传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。它是分组交换网络中最基础的时间结构之一。   
 
 In the classic textbook *Computer Networking: A Top-Down Approach*, Transmission Delay (also known as Serialization Delay) is defined as:  
-在经典教材《计算机网络：自顶向下方法》中，传输延迟定义为：  
+在经典教材《计算机网络：自顶向下方法》中，传输延迟（串行化时延）定义为：  
 
 L / R
 
