@@ -96,7 +96,10 @@ This eliminates all sources of Queuing and Processing Delay.
 ---
 
 ### 2) Negligible Propagation Delay｜传播时延可忽略
-Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，在中文名词上很容易混淆，Propagation Delay 是比特在链路上传播的飞行时间（flight time），由链路长度和信号传播速度决定。  
+Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，  
+在中文名词上很容易混淆，务必澄清：  
+Transmission Delay (Serialization Delay)传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
+Propagation Delay（传播时延）是信号在物理介质中传播所需的时间，由传播距离和传播速度决定。  
 
 The physical distance between the two NICs is minimal.
 
