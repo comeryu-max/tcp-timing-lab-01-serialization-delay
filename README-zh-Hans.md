@@ -96,11 +96,11 @@ This eliminates all sources of Queuing and Processing Delay.
 
 ### 2) Negligible Propagation Delay｜传播时延可忽略
 实验室内线缆极短，传播延迟仅为纳秒级，相对于毫秒级的串行化延迟可以忽略不计。  
-Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，  
+注：Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，  
 在中文名词上很容易混淆，务必澄清：  
-- Transmission Delay (Serialization Delay)传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
-- Propagation Delay（传播时延）是信号在物理介质中传播所需的时间，由传播距离和传播速度决定。  
-- Propagation Delay（传播时延）示例：
+- Transmission Delay (Serialization Delay) 传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
+- Propagation Delay（传播时延） 是信号在物理介质中传播所需的时间，由传播距离和传播速度决定。  
+- Propagation Delay（传播时延）示例：  
 地球周长约为 40,075 km，赤道对拓点（antipodal）之间的距离约为其一半，即约 20,037 km (2 × 10^7) 。  
 以单模光纤为例，其传播速度约为真空光速的 0.67，即 v = 2 × 10^8 m/s   
 Propagation Delay = Distance / Speed = (2 × 10^7) / (2 × 10^8) = 0.1s 即约 100 ms；  
