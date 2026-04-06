@@ -116,7 +116,7 @@ The physical distance between the two NICs is minimal.
 - Propagation delay: on the order of nanoseconds  
 
 Compared to millisecond-scale serialization delay (at 10 Mbps), propagation delay is effectively negligible.  
-与 10 Mbps 链路下的毫秒级串行化延迟相比，传播延迟微乎其微，实际上可以忽略不计  
+与 10 Mbps 链路下的毫秒级串行化延迟相比，Propagation Delay传播延迟微乎其微，实际上可以忽略不计  
 
 ---
 
