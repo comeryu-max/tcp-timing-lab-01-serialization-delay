@@ -25,7 +25,7 @@ In the classic textbook *Computer Networking: A Top-Down Approach*, Transmission
 
 L / R
 
-- L: packet length (bits)    数据包长度 (bits)
+- L: packet length (bits)    数据包长度 (bits)  
 - R: link rate (bps)   链路速率 (bps)  
 
 It is one of the simplest formulas in networking.  
@@ -77,13 +77,13 @@ This experiment is not an approximation.
 It is a direct observation of a physical timing property on the wire.  
 本实验并非模拟，这是对物理世界的直接观测。  
 
-The validity of the measurement is established by isolating serialization delay from all other delay components:
+The validity of the measurement is established by isolating serialization delay from all other delay components:  
 通过隔离传输时延（串行化时延），排除了其他延迟组件的影响：  
 
 ---
 
 ### 1) No Intermediate Devices｜无中间设备
-
+客户端与服务器背靠背直连，无交换机或路由器。👉 消除所有排队与处理时延    
 The client and server are directly connected back-to-back, with no switches or routers in the path.
 
 - No forwarding delay  
@@ -91,39 +91,48 @@ The client and server are directly connected back-to-back, with no switches or r
 - No scheduling artifacts  
 
 This eliminates all sources of Queuing and Processing Delay.
-👉 消除所有排队与处理时延  
 
 ---
 
 ### 2) Negligible Propagation Delay｜传播时延可忽略
+实验室内线缆极短，传播延迟仅为纳秒级，相对于毫秒级的串行化延迟可以忽略不计。  
 Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，  
 在中文名词上很容易混淆，务必澄清：  
-Transmission Delay (Serialization Delay)传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
-Propagation Delay（传播时延）是信号在物理介质中传播所需的时间，由传播距离和传播速度决定。  
+- Transmission Delay (Serialization Delay)传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
+- Propagation Delay（传播时延）是信号在物理介质中传播所需的时间，由传播距离和传播速度决定。  
+- Propagation Delay（传播时延）示例：
+地球周长约为 40,075 km，赤道对拓点（antipodal）之间的距离约为其一半，即约 20,037 km (2 × 10^7) 。  
+以单模光纤为例，其传播速度约为真空光速的 0.67，即 v = 2 × 10^8 m/s   
+Propagation Delay = Distance / Speed = (2 × 10^7) / (2 × 10^8) = 0.1s 即约 100 ms；  
+对应的往返时延（RTT）约为 200 ms。该值代表理想情况下由物理传播速度所决定的时延极限值。  
+- Serialization Delay：把比特“推上链路”的时间  
+- Propagation Delay：比特在链路上“飞行”的时间  
 
-The physical distance between the two NICs is minimal.
+The physical distance between the two NICs is minimal.  
+两块网卡之间的物理距离极短  
 
 - Cable length: short (lab setup)  
 - Propagation delay: on the order of nanoseconds  
 
-Compared to millisecond-scale serialization delay (at 10 Mbps), propagation delay is effectively negligible.
+Compared to millisecond-scale serialization delay (at 10 Mbps), propagation delay is effectively negligible.  
+与 10 Mbps 链路下的毫秒级串行化延迟相比，传播延迟微乎其微，实际上可以忽略不计  
 
 ---
 
-### 3) Passive, Non-Intrusive Observation (TAP)
-
-A hardware TAP (NetOptics Full-Duplex In-Line TAP) is used for monitoring.
-
+### 3) Passive, Non-Intrusive Observation (TAP)｜TAP无侵入观测
+使用硬件 TAP 复制信号，不修改包内容、不整形流量、不引入额外延迟。  
+👉 只复制信号，不改变时间结构  
+A hardware TAP (NetOptics Full-Duplex In-Line TAP) is used for monitoring.  
 - No packet modification  
 - No traffic shaping  
 - No additional delay introduced  
 
-The TAP provides a faithful copy of the signal without altering timing behavior.
+The TAP provides a faithful copy of the signal without altering timing behavior.  
 
 ---
 
-### 4) Wire-Speed Capture with Dedicated Analyzer
-
+### 4) Wire-Speed Capture with Dedicated Analyzer｜硬件时间戳
+使用具有硬件时间戳功能的专用协议分析仪，确保反映的是真实的物理链路行为。  
 Packets are captured using a dedicated NPM / protocol analyzer.
 
 - Hardware-assisted timestamping  
@@ -151,13 +160,14 @@ Therefore:
 
 This is exactly the definition of Transmission (Serialization) Delay.
 
-> This is not a model of the network.
-
-> This is the network itself.
+> This is not a model of the network.  
+> 这不是网络模型。  
+> This is the network itself.  
+> 这就是网络本身。  
 
 ---
 
-### Traffic Generation
+### Traffic Generation | 流量生成
 
 - Continuous TCP data transfer (HTTP download)  
 - Full-sized Ethernet frames (1518 Bytes)  
@@ -169,22 +179,28 @@ This is exactly the definition of Transmission (Serialization) Delay.
 
 ---
 
-### 🧠 Conclusion
-What is measured here is not a derived metric.
+### 🧠 Conclusion | 结论  
+What is measured here is not a derived metric.  
+此处所测量的并非一个派生指标 (Derived Metric)  
 
-It is not inferred.
+It is not inferred.  
+它不是推论得出的。  
 
-It is not estimated.
+It is not estimated.  
+它不是估算出来的。  
 
-It is directly observed.
+It is directly observed.  
+它是直接观测到的。  
 
 This experiment demonstrates that Transmission Delay (L / R) is a physically observable property of the link, manifested as inter-frame spacing (Δt) in real packet captures.  
+本实验证明，传输延迟 (L/R) 是链路的一种物理可观测属性，在真实抓包中表现为帧间间距 (Δt)。
 
 ---
 
-## 👁️ What We Observe
+## 👁️ What We Observe | 观察结果
 
 ### Packet Train: Making Transmission Delay Visible
+### 报文列车｜让时间结构显现
 
 Under continuous transmission, packets form a **packet train**:  
 
@@ -202,7 +218,7 @@ the physical manifestation of L / R.
 
 ---
 
-## Key Observation
+## Key Observation｜关键观测  
 
 | Link Speed | Observed Δt |
 |------------|-------------|
@@ -212,7 +228,7 @@ the physical manifestation of L / R.
 
 \* At 1 Gbps, Δt is limited by analyzer timestamp resolution.
 
-## Expected Results
+## Expected Results｜实验结果  
 
 | Link Speed | Frame Size | On-Wire Size | L/R (Frame) | Δt (Wire-Time) | Observed Δt |
 |------------|------------|--------------|-------------|----------------|-------------|
@@ -259,7 +275,7 @@ The observed Δt scales proportionally with link rate, consistent with L / R.
 
 ---
 
-## 📐 Theoretical Derivation
+## 📐 Theoretical Derivation｜理论与现实
 The observed results align directly with the on-wire serialization model:
 Ethernet on-wire size includes:
 
@@ -267,25 +283,19 @@ Ethernet on-wire size includes:
 - Preamble + SFD: 8 Bytes  
 - IFG: 12 Bytes  
 
-
 Total = 1538 Bytes
-
 
 Transmission delay:
 
-
 Δt = 1538 × 8 / R
-
 
 Example (10 Mbps):
 
-
 Δt  = （1538 × 8）/ 10Mbps ≈ 1.23 ms
-
 
 ---
 
-## 🔧 Key Technique
+## 🔧 Key Technique | 关键技术  
 
 1) Design an "ideal" observation environment that isolates Transmission (Serialization) Delay by minimizing Processing, Queuing, and Propagation Delays.  
 2) Use physical-layer TAP for non-intrusive capture  
@@ -309,7 +319,7 @@ More accurate validation can be achieved by averaging across a packet train.
 
 ---
 
-## ❗ Common Misconception
+## ❗ Common Misconception ｜常见误区  
 
 > Transmission Delay is theoretical
 
@@ -318,7 +328,7 @@ More accurate validation can be achieved by averaging across a packet train.
 
 ---
 
-## 🚀 Conclusion
+## 🚀 Conclusion｜结论  
 
 
 L / R is not just a formula.
