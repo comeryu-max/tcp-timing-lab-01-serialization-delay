@@ -1,215 +1,364 @@
 [English](./README.md) | [简体中文](./README-zh-Hans.md)  
 
-🌌 TCP Timing Lab 01  
-Observing Transmission Delay (Serialization Delay)   
-观测传输时延（串行化时延）  
+# TCP Timing Lab 01
 
-The network transmits bits, not packets. 
-网络传输的是比特，而不是数据包。  
+## Observing Transmission Delay (Serialization Delay)  
+## 观测传输时延（串行化时延） 
 
-From theory to wire — making L / R visible.  
-从理论走向链路 —— 让 L / R 可见  
+Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
+通过 10/100/1000 Mbps 链路的帧间时间差 (Δt) 观察以太网传输延迟（串行化时延）  
+> **The network transmits bits, not packets.**  
+> **网络传输的是比特，而不是数据包**
+> 
+> **From theory to wire: making L / R visible.**  
+> **从理论走向链路 —— 让 L / R 可见**  
 
-🧭 Overview｜概述  
+---
 
-Transmission Delay (Serialization Delay) is the time required to place a full frame onto the wire.  
-传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。  
+## 📌 Overview
 
-In Computer Networking: A Top-Down Approach:  
+> Transmission Delay (Serialization Delay) refers to the time required for a network interface to place an entire frame onto a physical transmission medium; as such, it stands as one of the most fundamental timing structures in packet-switched networks.  
+> 传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。它是分组交换网络中最基础的时间结构之一。   
 
-在经典教材《Computer Networking: A Top-Down Approach》中：  
+In the classic textbook *Computer Networking: A Top-Down Approach*, Transmission Delay (also known as Serialization Delay) is defined as:  
+在经典教材《计算机网络：自顶向下方法》中，传输延迟定义为：  
 
-L / R  
-L: packet length (bits)  
-R: link rate (bps)  
+L / R
 
-💡  
+- L: packet length (bits)    数据包长度 (bits)
+- R: link rate (bps)   链路速率 (bps)  
 
-Everyone knows this formula.  
-Almost no one has ever seen it.  
+It is one of the simplest formulas in networking.  
+这是网络工程中最简单的公式之一。  
 
-每个工程师都“知道”这个公式  
-但几乎没人真正“看见过它”  
+So simple that almost every network engineer *knows* it —  
+yet almost no one has ever *seen* it on the wire.  
+简单到几乎每个网络工程师都知道它，  
+但几乎没有人曾在物理线缆上真正观察过它。  
 
-👉 This lab turns theory into observation  
-👉 本实验让理论变成“可观测现实”  
+This lab turns that formula into a measurable reality.  
+本实验让理论变成“可观测现实”  
 
-🧠 Core Insight｜核心洞察  
-Transmission Delay = Serialization Delay = Δt  
+By observing inter-frame spacing (Δt) in real packet captures, we reveal that Ethernet serialization delay is a fixed physical time — directly observable, repeatable, and verifiable across link speeds.  
+通过观察实际抓包中的帧间间距 (Δt) ，我们证明了以太网串行化延迟是一个固定的物理时间——在不同链路速度下均直接可观测、可重复且可验证。  
 
-What you see in packet capture is not an approximation.  
-It is the wire.  
+---
 
-你在抓包中看到的不是近似值   
-它就是链路本身  
+## 🧠 Key Insight
 
-🎯 Objective｜实验目标  
-Make Transmission Delay observable  
-👉 让传输时延“可见”  
-Map L / R → Δt  
-👉 建立 L / R → Δt 映射  
-Validate theory with real packets  
-👉 用真实报文验证理论  
-🧪 Experiment Setup｜实验环境  
 
-✅ Measurement Validity｜测量有效性  
+Transmission Delay = Serialization Delay = Δt (inter-frame spacing)
 
-This is not an approximation.  
-This is a direct physical observation.  
 
-这不是近似  
-这是对物理世界的直接观测   
+What you see in packet captures is not an approximation.
 
-① No Intermediate Devices｜无中间设备  
-No switch / router  
-No queue / buffer / scheduling  
+It *is* the wire.
 
-👉 消除所有排队与处理时延  
+---
 
-② Negligible Propagation Delay｜传播时延可忽略  
-Short cable  
-Nanosecond-level delay  
+## 🎯 Objective
 
-👉 相比 ms 级串行化时延可忽略  
+- Make Transmission Delay observable  
+- Map L / R → Δt (inter-frame spacing)  
+- Validate theory using real packet captures  
 
-③ Passive TAP Observation｜TAP无侵入观测  
-No packet modification  
-No timing distortion  
+---
 
-👉 只复制信号，不改变时间结构  
+## 🧪 Experiment Setup
 
-④ Hardware Timestamp Capture｜硬件时间戳  
-Microsecond precision  
-No packet loss  
+### Topology
 
-👉 Δt = 真实链路时间  
+![Lab Topology](./figures/fig1-experimental-setup.svg)  
 
-⑤ Δt = Serialization Delay  
-Δt ≈ (Frame + Preamble + IFG) / Link Rate  
+## ✅ Why This Measurement Is Valid
 
-This is not a model of the network  
-This is the network itself  
- 
-🚂 Packet Train｜报文列车  
-Making Time Visible｜让时间结构显现  
-<pre>   
-Frame1 Frame2 Frame3 Frame4   
-|------| |------| |------| |------|   
-Δt       Δt       Δt   
-</pre>  
+This experiment is not an approximation.  
+It is a direct observation of a physical timing property on the wire.
 
-You are not seeing packets  
-You are seeing time  
+The validity of the measurement is established by isolating serialization delay from all other delay components:
 
-你看到的不是“包”  
-而是“时间结构”  
+---
 
-📊 Key Observation｜关键观测  
-Link Speed	Δt  
-10 Mbps	≈ 1.23 ms  
-100 Mbps	≈ 0.123 ms  
-1 Gbps	≈ 0.012–0.013 ms  
-📈 Experimental Results｜实验结果  
-10 Mbps  
+### 1) No Intermediate Devices
 
-Δt ≈ 1.23 ms  
-→ Direct physical manifestation of L / R  
+The client and server are directly connected back-to-back, with no switches or routers in the path.
 
-100 Mbps  
+- No forwarding delay  
+- No buffering or queueing  
+- No scheduling artifacts  
 
-Δt scales linearly with link rate  
-与 L / R 完全一致  
+This eliminates all sources of Queuing and Processing Delay.
 
-1 Gbps  
+---
 
-Limited by timestamp precision  
-受时间戳精度限制  
+### 2) Negligible Propagation Delay
 
-📐 Theory Meets Reality｜理论与现实  
-Δt = 1538 × 8 / R  
+The physical distance between the two NICs is minimal.
 
-Example (10 Mbps):  
+- Cable length: short (lab setup)  
+- Propagation delay: on the order of nanoseconds  
 
-≈ 1.23 ms  
+Compared to millisecond-scale serialization delay (at 10 Mbps), propagation delay is effectively negligible.
 
-Theory = Measurement  
-理论 = 观测  
+---
 
-🔧 Method｜方法论  
-Build ideal environment  
-👉 构建“纯净实验环境”  
-Use TAP  
-👉 无侵入观测  
-Use analyzer  
-👉 高精度采集  
-Measure Δt  
-👉 直接测时间  
-❗ Misconception｜常见误区  
+### 3) Passive, Non-Intrusive Observation (TAP)
 
-Transmission Delay is theoretical  
+A hardware TAP (NetOptics Full-Duplex In-Line TAP) is used for monitoring.
 
-❌ Wrong  
-✔ It is physical and deterministic  
+- No packet modification  
+- No traffic shaping  
+- No additional delay introduced  
 
-传输时延只是理论  
+The TAP provides a faithful copy of the signal without altering timing behavior.
 
-❌ 错误   
-✔ 它是确定性的物理时间 
+---
 
-🚀 Conclusion｜结论  
+### 4) Wire-Speed Capture with Dedicated Analyzer
 
-L / R is not just a formula  
-It is a measurable physical reality  
+Packets are captured using a dedicated NPM / protocol analyzer.
 
-L / R 不是公式  
-它是可以被观测的物理现实  
+- Hardware-assisted timestamping  
+- Microsecond-level precision  
+- No packet drops under test conditions  
 
-If you can measure Δt  
-you are not reasoning about the network  
-you are observing it  
+This ensures that inter-frame timing (Δt) reflects actual wire behavior.
 
-当你测量 Δt  
-你不是在“推理网络”  
-而是在“观测网络”  
+---
 
-🧩 Why It Matters｜为什么重要  
+### 5) Δt Directly Represents Serialization Delay
 
-The network is a time-structured system  
-网络本质是一个时间结构系统  
+The measured quantity is:
 
-Implications：  
+Δt = time between consecutive frames
 
-Packet Train = physical pacing  
-ACK Clock = time-driven system  
-Throughput ≠ Bandwidth  
-🔁 Engineering Impact｜工程意义  
+On a fully utilized link, frames are transmitted back-to-back, separated only by:  
 
-This lab is the foundation of:  
+- Serialization time of the frame  
+- Fixed Ethernet overhead (Preamble + IFG)  
 
-Packet Train  
-ACK Clock  
-Throughput anomalies  
-Congestion behavior  
+Therefore:
 
-👉 本实验是以下一切的基础：  
+Δt ≈ (Frame + Preamble + IFG) / Link Rate
 
-报文列车  
-ACK Clock  
-吞吐异常  
-拥塞行为  
-🔗 Next Lab  
-👉 Lab 02 — Serialization vs Throughput  
+This is exactly the definition of Transmission (Serialization) Delay.
 
-When serialization delay is fixed  
-why does throughput fluctuate?  
+> This is not a model of the network.
 
-当串行化时延固定时  
-为什么吞吐会变化？  
+> This is the network itself.
 
-🌌 Final Statement｜最终表达  
+---
 
-This is not a visualization  
-This is a measurement  
+### Traffic Generation
 
-这不是可视化
-这是测量
+- Continuous TCP data transfer (HTTP download)  
+- Full-sized Ethernet frames (1518 Bytes)  
+- Back-to-back packet train under sustained throughput
+
+> The HTTP download throughput approaches the link capacity, leaving no idle gap between transmissions.  
+> As a result, the sender emits full-sized Ethernet frames in a continuous back-to-back manner, forming a packet train.  
+> In this regime, the inter-frame spacing (Δt) becomes a direct manifestation of serialization delay (Δt = L / R).  
+
+---
+
+### 🧠 Conclusion
+What is measured here is not a derived metric.
+
+It is not inferred.
+
+It is not estimated.
+
+It is directly observed.
+
+This experiment demonstrates that Transmission Delay (L / R) is a physically observable property of the link, manifested as inter-frame spacing (Δt) in real packet captures.  
+
+---
+
+## 👁️ What We Observe
+
+### Packet Train: Making Transmission Delay Visible
+
+Under continuous transmission, packets form a **packet train**:  
+
+What we observe is not packets — but timing structure:  
+
+
+<pre>
+Frame1      Frame2      Frame3      Frame4
+|------|    |------|    |------|    |------|
+ Δt         Δt         Δt
+</pre>
+
+Each Δt reflects the time required to serialize one frame onto the link —  
+the physical manifestation of L / R.
+
+---
+
+## Key Observation
+
+| Link Speed | Observed Δt |
+|------------|-------------|
+| 10 Mbps    | ≈ 1.23 ms   |
+| 100 Mbps   | ≈ 0.123 ms  |
+| 1 Gbps     | ≈ 0.012–0.013 ms* |
+
+\* At 1 Gbps, Δt is limited by analyzer timestamp resolution.
+
+## Expected Results
+
+| Link Speed | Frame Size | On-Wire Size | L/R (Frame) | Δt (Wire-Time) | Observed Δt |
+|------------|------------|--------------|-------------|----------------|-------------|
+| 10 Mbps    | 1518 B     | 1538 B       | 1.214 ms    | 1.230 ms       | Consistent  |
+| 100 Mbps   | 1518 B     | 1538 B       | 0.121 ms    | 0.123 ms       | Consistent  |
+| 1 Gbps     | 1518 B     | 1538 B       | 12.144 µs   | 12.304 µs      | ≈ 12–13 µs* |
+
+\* Measurement limited by analyzer timestamp resolution (microsecond granularity).  
+
+---
+
+## 📈 Experimental Results (10 Mbps)
+
+![Packet Analysis](./figures/fig2-transmission-delay-10mbps.svg)  
+
+*Figure 1. Packet train observed at 10 Mbps showing constant inter-frame spacing (Δt ≈ 1.23 ms), directly corresponding to transmission delay.*  
+
+---
+📥 **Raw Packet Capture**
+
+- File: `lab01-fig1-10mbps-server-to-client.pcap`  
+- Size: 13.1 MB  
+- Packets: 8991  
+
+Download:
+
+- Direct Download (recommended):  
+https://raw.githubusercontent.com/comeryu-max/tcp-timing-lab-01-observing-transmission-delay-serialization/main/data/pcap/lab01-fig1-10mbps-server-to-client.pcap
+
+This PCAP file can be used to independently verify Δt ≈ L / R by observing inter-frame spacing in Wireshark.
+
+## 📈 Experimental Results (100 Mbps)
+
+![Packet Analysis2](./figures/fig3-transmission-delay-100mbps.svg)  
+The observed Δt scales proportionally with link rate, consistent with L / R.  
+
+---
+
+## 📈 Experimental Results (1 Gbps)
+
+![Packet Analysis3](./figures/fig4-transmission-delay-1gbps.svg)  
+*Observed Δt is shown as ~0.012 ms due to timestamp quantization; theoretical value is ~12.304 µs.*  
+The observed Δt scales proportionally with link rate, consistent with L / R.  
+
+---
+
+## 📐 Theoretical Derivation
+The observed results align directly with the on-wire serialization model:
+Ethernet on-wire size includes:
+
+- Frame: 1518 Bytes  
+- Preamble + SFD: 8 Bytes  
+- IFG: 12 Bytes  
+
+
+Total = 1538 Bytes
+
+
+Transmission delay:
+
+
+Δt = 1538 × 8 / R
+
+
+Example (10 Mbps):
+
+
+Δt  = （1538 × 8）/ 10Mbps ≈ 1.23 ms
+
+
+---
+
+## 🔧 Key Technique
+
+1) Design an "ideal" observation environment that isolates Transmission (Serialization) Delay by minimizing Processing, Queuing, and Propagation Delays.  
+2) Use physical-layer TAP for non-intrusive capture  
+3) Capture with high-precision analyzer  
+4) Analyze Δt using Wireshark  
+
+---
+
+## ⚠️ Important Notes
+
+### 1 Gbps Measurement Limitation
+
+At 1 Gbps:
+
+- Theoretical Δt ≈ 12.304 µs  
+- Observed Δt ≈ 12 µs  
+
+Due to timestamp resolution, single-frame measurement reaches quantization limits.
+
+More accurate validation can be achieved by averaging across a packet train.
+
+---
+
+## ❗ Common Misconception
+
+> Transmission Delay is theoretical
+
+❌ Incorrect  
+✔ It is a deterministic physical time on the wire
+
+---
+
+## 🚀 Conclusion
+
+
+L / R is not just a formula.
+It is a measurable physical reality.
+
+
+If you can measure Δt,  
+you are not reasoning about the network —  
+you are observing it.
+
+---
+
+## 🧩 Why This Matters
+
+This experiment reveals a fundamental truth:
+
+> **The network is a time-structured system**
+
+Implications:
+
+* Packet trains are **physically paced**
+* TCP behavior is **time-driven (ACK clock)**
+* Throughput is **not equal to bandwidth**
+
+---
+
+## 🚀 Engineering Implication
+
+This lab establishes the foundation for:
+
+* Packet Train analysis
+* ACK Clock understanding
+* Throughput anomalies
+* Congestion behavior
+
+---
+
+## 🔗 Next Lab
+
+👉 **Lab 02 — Serialization vs Throughput**
+
+> When serialization delay is fixed,
+> why does throughput fluctuate?
+
+---
+
+This is not a visualization.
+
+This is a measurement.
+
+---
