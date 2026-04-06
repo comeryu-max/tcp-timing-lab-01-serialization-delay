@@ -34,7 +34,7 @@ It is one of the simplest formulas in networking.
 So simple that almost every network engineer *knows* it —  
 yet almost no one has ever *seen* it on the wire.  
 简单到几乎每个网络工程师都知道它，  
-但几乎没有人曾在物理线缆上真正观察过它。  
+但几乎没有人曾在物理链路上真正观察过它。  
 
 This lab turns that formula into a measurable reality.  
 本实验让理论变成“可观测现实”  
@@ -78,11 +78,11 @@ It is a direct observation of a physical timing property on the wire.
 本实验并非模拟，这是对物理世界的直接观测。  
 
 The validity of the measurement is established by isolating serialization delay from all other delay components:
-通过隔离传输延迟（串行化时延），排除了其他延迟组件的影响：  
+通过隔离传输时延（串行化时延），排除了其他延迟组件的影响：  
 
 ---
 
-### 1) No Intermediate Devices
+### 1) No Intermediate Devices｜无中间设备
 
 The client and server are directly connected back-to-back, with no switches or routers in the path.
 
@@ -91,10 +91,12 @@ The client and server are directly connected back-to-back, with no switches or r
 - No scheduling artifacts  
 
 This eliminates all sources of Queuing and Processing Delay.
+👉 消除所有排队与处理时延  
 
 ---
 
-### 2) Negligible Propagation Delay
+### 2) Negligible Propagation Delay｜传播时延可忽略
+Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，在中文名词上很容易混淆，Propagation Delay 是比特在链路上传播的飞行时间（flight time），由链路长度和信号传播速度决定。  
 
 The physical distance between the two NICs is minimal.
 
