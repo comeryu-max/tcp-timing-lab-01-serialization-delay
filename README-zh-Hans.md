@@ -110,7 +110,7 @@ Propagation Delay = Distance / Speed = (2 × 10^7) / (2 × 10^8) = 0.1s 即约 1
 - Propagation Delay：比特在链路上“飞行”的时间  
 
 The physical distance between the two NICs is minimal.  
-两块网卡之间的物理距离极短  
+我们在实验室环境中，两块网卡之间的物理距离极短  
 
 - Cable length: short (lab setup)  
 - Propagation delay: on the order of nanoseconds  
