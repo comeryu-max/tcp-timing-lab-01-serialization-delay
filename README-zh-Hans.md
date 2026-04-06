@@ -15,7 +15,7 @@ Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame 
 
 ---
 
-## 📌 Overview
+## 📌 Overview｜概述
 
 > Transmission Delay (Serialization Delay) refers to the time required for a network interface to place an entire frame onto a physical transmission medium; as such, it stands as one of the most fundamental timing structures in packet-switched networks.  
 > 传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。它是分组交换网络中最基础的时间结构之一。   
@@ -71,12 +71,14 @@ It *is* the wire.
 
 ![Lab Topology](./figures/fig1-experimental-setup.svg)  
 
-## ✅ Why This Measurement Is Valid
+## ✅ Why This Measurement Is Valid｜测量有效性
 
 This experiment is not an approximation.  
-It is a direct observation of a physical timing property on the wire.
+It is a direct observation of a physical timing property on the wire.  
+本实验并非模拟，这是对物理世界的直接观测。  
 
 The validity of the measurement is established by isolating serialization delay from all other delay components:
+通过隔离传输延迟（串行化时延），排除了其他延迟组件的影响：  
 
 ---
 
