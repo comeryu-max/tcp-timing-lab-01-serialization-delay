@@ -381,4 +381,11 @@ This is not a visualization.
 
 This is a measurement.
 
+## 📖 Terminology Bridge
+
+- Transmission Delay — textbook abstraction  
+- Serialization Delay — physical reality  
+
+This lab connects the two through direct measurement.
+
 ---
