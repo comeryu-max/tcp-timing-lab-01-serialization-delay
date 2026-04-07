@@ -1,8 +1,8 @@
 [English](./README.md) | [简体中文](./README-zh-Hans.md)
 
 # TCP Timing Lab 01
-
 ## Observing Transmission Delay (Serialization Delay)  
+This lab demonstrates how to directly observe transmission delay (serialization delay) using packet-level timing (Δt).  
 
 Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
 > **The network transmits bits, not packets.**  
