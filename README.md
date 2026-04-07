@@ -1,12 +1,44 @@
 [English](./README.md) | [简体中文](./README-zh-Hans.md)
 
-# TCP Timing Lab 01
-## Observing transmission delay (serialization delay) through inter-frame packet timing (Δt)   
-This lab demonstrates how to directly observe transmission delay (serialization delay) using packet-level timing (Δt).  
+# TCP Timing Lab 01  
+## Observing Transmission Delay (Serialization Delay)
 
-Observing Ethernet Transmission Delay (Serialization Delay) through inter-frame timing (Δt) across 10/100/1000 Mbps links  
+> Making the invisible visible — measuring Δt on real networks
+
+---
+
+## 📌 Concept
+
+In networking textbooks, this is known as **Transmission Delay**.
+
+In real systems, what we directly observe is:
+
+> **Serialization Delay — the time required to put bits onto the wire.**
+
+---
+
+## 🔬 What This Lab Shows
+
+This lab demonstrates how to directly observe transmission delay (serialization delay) using **packet-level timing (Δt)**.
+
+Specifically:
+
+- Inter-frame timing (Δt) reflects serialization on the wire  
+- The same behavior appears across **10 / 100 / 1000 Mbps links**  
+- Transmission delay becomes directly measurable  
+
+---
+
+## 🧠 Key Insight
+
 > **The network transmits bits, not packets.**  
-> From theory to wire: making L / R visible.  
+> What we observe as packets is a reconstruction of a continuous bit stream.
+
+---
+
+## 🔎 Keywords
+
+transmission delay · serialization delay · packet timing · Δt · ethernet timing
 
 ---
 
