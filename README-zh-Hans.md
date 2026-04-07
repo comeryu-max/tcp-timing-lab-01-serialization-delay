@@ -95,7 +95,7 @@ This eliminates all sources of Queuing and Processing Delay.
 ---
 
 ### 2) Negligible Propagation Delay｜传播时延可忽略
-实验室内线缆极短，传播延迟仅为纳秒级，相对于毫秒级的串行化延迟可以忽略不计。  
+实验室内线缆极短，传播延迟仅为纳秒级，相对于 毫秒级/微秒级 的串行化延迟可以忽略不计。  
 注：Transmission Delay (Serialization Delay) 传输时延（串行化时延）,与Propagation Delay传播时延，  
 在中文名词上很容易混淆，务必澄清：  
 - Transmission Delay (Serialization Delay) 传输时延（串行化时延） 是将一个完整帧推上链路所需的时间。   
@@ -132,15 +132,18 @@ The TAP provides a faithful copy of the signal without altering timing behavior.
 
 ---
 
-### 4) Wire-Speed Capture with Dedicated Analyzer｜硬件时间戳
-使用具有硬件时间戳功能的专用协议分析仪，确保反映的是真实的物理链路行为。  
-Packets are captured using a dedicated NPM / protocol analyzer.
+### 4) Wire-Speed Capture with Dedicated Analyzer｜专用分析仪表  
+Packets are captured using a dedicated NPM / protocol analyzer.  
+数据包通过专用的 NPM / 协议分析仪进行捕获  
 
-- Hardware-assisted timestamping  
-- Microsecond-level precision  
-- No packet drops under test conditions  
+- Timestamping is performed with microsecond-level precision using a NIC-based capture path.  
+  利用基于网卡的捕获路径进行时间戳标记，精度达到微秒级。  
+- No packet drops were observed under test conditions.  
+  在测试条件下未观察到丢包现象。   
 
-This ensures that inter-frame timing (Δt) reflects actual wire behavior.
+Given that the measured inter-frame gap (Δt) is orders of magnitude larger than timestamp uncertainty,
+the observed timing accurately reflects on-wire serialization behavior.  
+由于实测的帧间隙 (Δt) 远大于时间戳的不确定性（Uncertainty），观测到的时序数据能够真实、准确地反映物理链路上的序列化行为（Serialization Behavior）。
 
 ---
 
