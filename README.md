@@ -106,11 +106,11 @@ The TAP provides a faithful copy of the signal without altering timing behavior.
 
 Packets are captured using a dedicated NPM / protocol analyzer.
 
-- Hardware-assisted timestamping  
-- Microsecond-level precision  
-- No packet drops under test conditions  
+- Timestamping is performed with microsecond-level precision using a NIC-based capture path.  
+- No packet drops were observed under test conditions.  
 
-This ensures that inter-frame timing (Δt) reflects actual wire behavior.
+Given that the measured inter-frame gap (Δt) is orders of magnitude larger than timestamp uncertainty,
+the observed timing accurately reflects on-wire serialization behavior.
 
 ---
 
